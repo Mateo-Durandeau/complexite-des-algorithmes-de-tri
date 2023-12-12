@@ -19,12 +19,9 @@ def lire_csv(nom_fichier):
 def plot_graph(taille, temps, label, color):
     plt.plot(taille, temps, marker='o', label=label, color=color)
 
-def main():
-    fichier1 = 'resultat_C/resultat_cm_1.csv'
-    fichier2 = 'resultat_python/py_resultat_cm_1.csv'
-
-    data1 = lire_csv(fichier1)
-    data2 = lire_csv(fichier2)
+def graph_comparaison(nom_fichier1, nom_fichier2):
+    data1 = lire_csv(nom_fichier1)
+    data2 = lire_csv(nom_fichier2)
 
     plt.figure(figsize=(10, 6))
 
@@ -38,6 +35,14 @@ def main():
     plt.legend()
     plt.grid(True)
     plt.show()
+
+
+def main():
+    #exemple nom fichier pour appel
+    #fichier1 = 'resultat_C/resultat_cm_1.csv'
+    #fichier2 = 'resultat_python/py_resultat_cm_1.csv'
+    graph_comparaison('resultat_C/resultat_cm_1.csv', 'resultat_python/py_resultat_cm_1.csv')
+
 
 if __name__ == '__main__':
     main()
