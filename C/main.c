@@ -4,12 +4,6 @@
 #include "utiles.h"
 #include "tab_creation.h"
 
-/*
-    * DURANDEAU MATEO
-    * programme test d'un algorithme de tri (tri de shell de base mais il peut etre modifié) sur le temps d'execution
-    * automatisation de création d'un jeu de données dans des fichiers
-    * automatisation de lecture et calcul de temps d'execution d'une run de fichier
-*/
 
 int main() {
 
