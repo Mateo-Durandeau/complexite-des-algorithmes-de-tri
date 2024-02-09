@@ -17,7 +17,7 @@ def tri_de_shell_seq(tab):
 
             tab[j] = cle
 
-
+#tri de shell avec sans seq d'intervalles normalement pré-optimisé.
 def tri_de_shell(tab):
     intervalle = len(tab) // 2
 
@@ -33,3 +33,6 @@ def tri_de_shell(tab):
             tab[j] = cle
 
         intervalle //= 2
+
+        
+# AJOUTER LES ALGORITHMES DE TRI
