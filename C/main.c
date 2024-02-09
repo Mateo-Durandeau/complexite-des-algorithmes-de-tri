@@ -8,7 +8,14 @@
 int main() {
 
     // generation d'une run
+    // arguments : 
+         // nombre de nombres       
+         // num du cas 
+         // nombre de fichiers
+         // pas de difference 
+        // Cas moyen 0 à X
 
+    
     /*generation_run(10000, 1, 100, 100, 100);
     generation_run(10000, 1, 100, 100, 1000);
     generation_run(1000000, 1, 9, 100000, 100);
