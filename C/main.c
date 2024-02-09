@@ -6,8 +6,8 @@
 
 /*
     * DURANDEAU MATEO
-    * programme test d'un algorithme de tri (tri de shell de base mais il peut etre modifié) sur le temps d'execution
-    * automatisation de création d'un jeu de données dans des fichiers
+    * programme test d'un algorithme de tri (tri de shell de base mais il peut etre modifiÃ©) sur le temps d'execution
+    * automatisation de crÃ©ation d'un jeu de donnÃ©es dans des fichiers
     * automatisation de lecture et calcul de temps d'execution d'une run de fichier
 */
 
