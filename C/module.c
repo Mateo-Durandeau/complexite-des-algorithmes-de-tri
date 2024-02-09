@@ -2,12 +2,12 @@
 #include "module.h"
 
 
-// ############# fonction tri de shell avec sequence d'intervalle optimisé ##############
+// ############# fonction tri de shell avec sequence d'intervalle optimisÃ© ##############
 void tri_de_shell_seq(int tableau[], int taille) {
-    // Séquence d'intervalles pré-optimisée
+    // SÃ©quence d'intervalles prÃ©-optimisÃ©e
     int intervalles[] = {701, 301, 132, 57, 23, 10, 4, 1};
 
-    // Boucle sur les intervalles de la séquence
+    // Boucle sur les intervalles de la sÃ©quence
     for (int k = 0; k < sizeof(intervalles) / sizeof(intervalles[0]); k++) {
         int gap = intervalles[k];
 
@@ -26,8 +26,8 @@ void tri_de_shell_seq(int tableau[], int taille) {
     }
 }
 
-// ############# fonction tri de shell sans sequence d'intervalle optimisé ##############
-// on peut faire un intervalle divisé par trois mais j'ai choisis celui la
+// ############# fonction tri de shell sans sequence d'intervalle optimisÃ© ##############
+// on peut faire un intervalle divisÃ© par trois mais j'ai choisis celui la
 void tri_de_shell(int tableau[], int taille) {
     int intervalle = taille / 2;
 
