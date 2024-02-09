@@ -1,7 +1,10 @@
 import csv
 import time
-import module_tri_shell
 import os
+import module_tri
+import sys
+
+sys.setrecursionlimit(10000)
 
 def verification_tri(tableau):
     """ verification si le tableau est trié """
@@ -39,7 +42,7 @@ def lire_fichier_csv(nom_fichier):
 
 
 def temps_exec(tableau, num_module_tri):
-    """ calcul le temps d'execution en effectuant un tri avec ou sans sequence 100 fois"""
+    """ calcul le temps d'execution en effectuant un tri avec ou sans sequence X fois"""
     module_tri_shell.tri_de_shell(tableau)
     temps_cpu_total = 0.0
     temps_cpu_copie = 0.0
@@ -49,15 +52,24 @@ def temps_exec(tableau, num_module_tri):
         if num_module_tri == 1:
             tableau_copie = copie_tab(tableau)
             debut = time.time()
-            module_tri_shell.tri_de_shell(tableau_copie)
+            module_tri.tri_de_shell(tableau_copie)
             fin = time.time()
             temps_cpu_total += fin - debut
 
         if num_module_tri == 2:
             debut = time.time()
-            module_tri_shell.tri_de_shell_seq(tableau)
+            module_tri.tri_de_shell_seq(tableau)
             fin = time.time()
             temps_cpu_total += fin - debut
+
+        ##################################
+            # Rajouter ici les algorithmes de tri a tester sous la forme : 
+        # if num_module_tri == précedent_num + 1:
+        #       debut = time.time()
+        #       Appel de la fonction de tri
+        #       fin = time.time()
+        #       temps_cpu_total += fin - debut
+        ##################################
 
         debut = time.time()
         copie_tab(tableau)
@@ -70,7 +82,6 @@ def temps_exec(tableau, num_module_tri):
     return temps_cpu_moyen_total
 
 
-
 def sauvegarder_resultats_csv(nom_fichier, taille, temps_execution, type_run, limite):
     """ sauvegarde des resultats dans un fichier csv resultat """
     script_dir = os.path.dirname(__file__)  # Récupère le répertoire du script pour pouvoir lire les fichiers
@@ -78,7 +89,7 @@ def sauvegarder_resultats_csv(nom_fichier, taille, temps_execution, type_run, li
 
     with open(nom_fichier_path, 'a') as fichier:
         # ecriture dans le fichier csv des resultats
-        fichier.write(f"{type_run}, {limite}, {taille}, {temps_execution}\n")
+        fichier.write(f"{type_run}; {limite}; {taille}; {temps_execution}\n")
 
 
 def test_tri(tableau, nom_fichier_csv, choix, verif_tab, affichage, nom_sauvegarde_csv, num_module_tri, limite):
@@ -106,7 +117,8 @@ def test_tri(tableau, nom_fichier_csv, choix, verif_tab, affichage, nom_sauvegar
         sauvegarder_resultats_csv(nom_sauvegarde_csv, len(tab), temps_execution, "mc-1", limite)
     if choix == 3 and num_module_tri == 2:
         sauvegarder_resultats_csv(nom_sauvegarde_csv, len(tab), temps_execution, "mc-2", limite)
-
+    
+    sauvegarder_resultats_csv(nom_sauvegarde_csv, len(tab), temps_execution, "...", limite)
 
 def test_tri_run(taille_fich, num_module_tri, Nb_tab, pas_difference, verif_tab, affichage, choix, nom_sauvegarde_csv, limite):
     """ test tri sur une run complete de fichier csv nombre fais en C """
