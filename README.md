@@ -1,17 +1,5 @@
-# time-complexity_of_sorting_algorithms
+# Complexite des algorithmes de tri en C et en Python
 - DURANDEAU Matéo
-creation of: dataset (run of file) // execution time, shorting :  python test --> intepreter , C test --> compilation
-result exploitation
+  
+# Comment ca marche :
 
-utilization : 
-
-1 - dataset 
-
-
-2 - select the sorting algorithm (possibility of adding one)
-
-
-3 -  test run 
-
-
-4 - graphique creation 
