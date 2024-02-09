@@ -12,6 +12,8 @@ import utiles
 #         Nom du fichier de save 
 #         nombres d'élément en 1 et x pour le cas moyen
 
+# Retourne un fichier csv qui contient les donnees de mesures
+
 utiles.test_tri_run(10000, 1, 100, 100, 1, 0, 1, "py_resultat_cm_1.csv", 100)
 utiles.test_tri_run(10000, 1, 100, 100, 1, 0, 1, "py_resultat_cm_1.csv", 1000)
 utiles.test_tri_run(1000000, 1, 9, 100000, 1, 0, 1, "py_resultat_cm_1.csv", 100)
