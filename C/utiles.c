@@ -6,19 +6,19 @@
 
 /*
     * fonction permettant la lecture automatique des fichiers et du traitement du temps d'execution
-    * séparation des fonctions pour une utilisation individuel ou bien d'une run complète généré via tab_creation
-    * création des tableaux de facon dynamique pour utiliser la limite de taille d'un INT 32 bit (éviter les limites de stack)
-    * verifier la localisation du fichier tableau ou sont stocké les fichiers
+    * sÃ©paration des fonctions pour une utilisation individuel ou bien d'une run complÃ¨te gÃ©nÃ©rÃ© via tab_creation
+    * crÃ©ation des tableaux de facon dynamique pour utiliser la limite de taille d'un INT 32 bit (Ã©viter les limites de stack)
+    * verifier la localisation du fichier tableau ou sont stockÃ© les fichiers
 */
 
-// ######################## fonction de vérification de l'état de tri d'un tableau ###########################
+// ######################## fonction de vÃ©rification de l'Ã©tat de tri d'un tableau ###########################
 void verification_tri(int tableau[], int taille) {
     int max = tableau[0];
     int erreur = 0;
     // parcours du tableau
     for(int i = 1; i < taille; i++)
         {
-            // si un element est inferieur au précedent alors afficher erreur de tri
+            // si un element est inferieur au prÃ©cedent alors afficher erreur de tri
             if (max > tableau[i])
             {
                 printf("erreur tableau \n");
@@ -43,7 +43,7 @@ void affiche_tab(int tab[], int taille){
 // ######################## fonction de copie d'un tableau ###########################
 //    - utilisation d'un tableau qui contient la liste de nombre initial et d'un second qui sert de copie
 void copie_tab(int tableau_base[], int destination_tab[], int taille) {
-    // copie des éléments un par un dans le parcours du tableau
+    // copie des Ã©lÃ©ments un par un dans le parcours du tableau
     for (int i = 0; i < taille; i++) {
         destination_tab[i] = tableau_base[i];
     }
@@ -68,18 +68,18 @@ int lire_fichier_csv(const char *nom_fichier, int *tableau, int taille_attendue)
     }
     // Fermer le fichier
     fclose(fichier);
-    // Retourner le nombre d'éléments lus (evite les problèmes de taille)
+    // Retourner le nombre d'Ã©lÃ©ments lus (evite les problÃ¨mes de taille)
     return index;
 }
 
 
 // ######################## fonction du calcul du temps d'execution ###########################
-//     - utlisation d'un tableau copie pour tester 100 fois l'execution d'un tri pour une meilleur précision
-//     - le temps d'execution de la copie n'est pas pris en compte mais peut être affiché
+//     - utlisation d'un tableau copie pour tester 100 fois l'execution d'un tri pour une meilleur prÃ©cision
+//     - le temps d'execution de la copie n'est pas pris en compte mais peut Ãªtre affichÃ©
 float temps_exec(int tableau[], int taille, int num_module_tri) {
     // initialisation des variables
-    clock_t debut; /* temps initial en ticks d’horloge */
-    clock_t fin;   /* temps final en ticks d’horloge */
+    clock_t debut; /* temps initial en ticks dâ€™horloge */
+    clock_t fin;   /* temps final en ticks dâ€™horloge */
     float temps_cpu_total = 0.0; /* temps total en secondes */
     float temps_cpu_copie = 0.0; /* temps de copie du tableau en secondes */
     const int nombre_tests = 100;
@@ -93,7 +93,7 @@ float temps_exec(int tableau[], int taille, int num_module_tri) {
         // creation dynamique du tableau de copie
         int *tableau_copie = malloc(taille * sizeof(int));
         if (tableau_copie == NULL) {
-            perror("Erreur lors de l'allocation de mémoire pour la copie du tableau");
+            perror("Erreur lors de l'allocation de mÃ©moire pour la copie du tableau");
             exit(EXIT_FAILURE);
         }
 
@@ -104,7 +104,7 @@ float temps_exec(int tableau[], int taille, int num_module_tri) {
 
         temps_cpu_copie += (float)(fin - debut) / CLOCKS_PER_SEC;
 
-        // choix entre le tri avec ou sans séquence + calcul temps execution
+        // choix entre le tri avec ou sans sÃ©quence + calcul temps execution
         if (num_module_tri == 1) {
             debut = clock();
             tri_de_shell(tableau_copie, taille);
@@ -132,19 +132,19 @@ void sauvegarder_resultats_csv(const char *nom_fichier, int taille, float temps_
         perror("Erreur lors de l'ouverture du fichier");
         return;
     }
-    // Écrire le type de run, la taille et le temps d'exécution dans le fichier CSV
+    // Ã‰crire le type de run, la taille et le temps d'exÃ©cution dans le fichier CSV
     fprintf(fichier, "%s, %d, %d, %f\n", type_run, limite, taille, temps_execution);
     fclose(fichier);
 }
 
-// ######################## fonction de test de tri sur un fichier avec calcul de temps d'éxecution ###########################
+// ######################## fonction de test de tri sur un fichier avec calcul de temps d'Ã©xecution ###########################
 void test_tri(int tableau[], int taille, const char *nom_fichier_csv, int choix, int verif_tab, int affichage, const char *nom_sauvegarde_csv, int num_module_tri, int limite)
 {
-    // création du tableau dynamiquement
-    // Utiliser le même tableau pour la lecture et le tri
+    // crÃ©ation du tableau dynamiquement
+    // Utiliser le mÃªme tableau pour la lecture et le tri
     int *tab = malloc(taille * sizeof(int));
     if (tab == NULL) {
-        perror("Erreur lors de l'allocation de mémoire pour le tableau");
+        perror("Erreur lors de l'allocation de mÃ©moire pour le tableau");
         exit(EXIT_FAILURE);
     }
     // lecture d'un fichier
@@ -180,7 +180,7 @@ void test_tri(int tableau[], int taille, const char *nom_fichier_csv, int choix,
     free(tab);
 }
 
-// ######################## fonction de test de tri d'une run sur un ensemble de fichier avec calcul de temps d'éxecution ###########################
+// ######################## fonction de test de tri d'une run sur un ensemble de fichier avec calcul de temps d'Ã©xecution ###########################
 void test_tri_run(int taille_fich, int num_module_tri, int Nb_tab, int pas_difference, int verif_tab, int affichage, int choix, const char *nom_sauvegarde_csv, int limite) {
 
     for (int i = 1; i <= Nb_tab; i++) {
@@ -207,20 +207,20 @@ void test_tri_run(int taille_fich, int num_module_tri, int Nb_tab, int pas_diffe
             snprintf(nom_fichier, sizeof(nom_fichier), "tableau/mc/tab_mc_%d_%d_%03d", limite, taille_fich, i);
             strcat(nom_fichier, ".csv");
         }
-        // Lire et trier le fichier, puis afficher les résultats
+        // Lire et trier le fichier, puis afficher les rÃ©sultats
         printf("%d", taille_fich);
 
         // Utilisation d'un tableau dynamique
         int *tab = malloc(taille_fich * sizeof(int));
         if (tab == NULL) {
-            perror("Erreur d'allocation de mémoire");
+            perror("Erreur d'allocation de mÃ©moire");
             exit(EXIT_FAILURE);
         }
         //lire_fichier_csv(nom_fichier, tab, taille_fich);
         printf("\n\n=== Test pour %s ===\n", nom_fichier);
         test_tri(tab, taille_fich, nom_fichier, choix, verif_tab, affichage, nom_sauvegarde_csv, num_module_tri, limite);
         free(tab);
-        // decrémentation du pas
+        // decrÃ©mentation du pas
         taille_fich = taille_fich - pas_difference;
     }
 }
