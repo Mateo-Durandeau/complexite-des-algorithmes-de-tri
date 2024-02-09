@@ -4,12 +4,6 @@
 #include <stdio.h>
 #include <time.h>
 
-/*
-    * fonction permettant la lecture automatique des fichiers et du traitement du temps d'execution
-    * séparation des fonctions pour une utilisation individuel ou bien d'une run complète généré via tab_creation
-    * création des tableaux de facon dynamique pour utiliser la limite de taille d'un INT 32 bit (éviter les limites de stack)
-    * verifier la localisation du fichier tableau ou sont stocké les fichiers
-*/
 
 // ######################## fonction de vérification de l'état de tri d'un tableau ###########################
 void verification_tri(int tableau[], int taille) {
@@ -115,6 +109,10 @@ float temps_exec(int tableau[], int taille, int num_module_tri) {
             tri_de_shell_seq(tableau_copie, taille);
             fin = clock();
         }
+
+       // #################################################################
+       // ajout ici pour l'algorithme de tri ajouté : Voir la forme en haut et incrémenter le numéro du module de tri !!
+       // #################################################################
 
         temps_cpu_total += (float)(fin - debut) / CLOCKS_PER_SEC;
         free(tableau_copie);
