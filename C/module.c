@@ -47,3 +47,6 @@ void tri_de_shell(int tableau[], int taille) {
         intervalle /= 2;
     }
 }
+
+
+// ########################## Ajouter ici le nouvel algorithme de tri : #######################################
